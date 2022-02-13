@@ -15,22 +15,22 @@ def webServer(port=13331):
 
   while True:
     #Establish the connection
-    print('Ready to serve...')
+    #print('Ready to serve...')
     connectionSocket, addr = serverSocket.accept()
     try:
 
       try:
         bufSize = 4096
-        print('Ready to receive message...')
+        #print('Ready to receive message...')
         message = connectionSocket.recv(bufSize).decode()
         filename = message.split()[1]
         f = open(filename[1:])
         outputdata = f.read()
-        print(outputdata)
+        #print(outputdata)
         
         #Send one HTTP header line into socket.
         #Fill in start
-        httpHeaderLine = "HTTP/1.1 200 OK"
+        httpHeaderLine = "HTTP/1.1 200 OK\r\n"
         connectionSocket.send(httpHeaderLine.encode())
         #Fill in end
 
