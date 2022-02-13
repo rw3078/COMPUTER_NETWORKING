@@ -36,47 +36,35 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
       mailFromCommand = 'MAIL FROM Bob\r\n'
       clientSocket.send(mailCommand.encode())
       recv2 = clientSocket.recv(1024).decode()
-    except IOError:
-      connectionSocket.send(badRequestMessage.encode())
     # Fill in end
 
     # Send RCPT TO command and handle server response.
     # Fill in start
-    try:
       rcptToCommand = 'RCPT TO Alice\r\n'
       clientSocket.send(mailCommand.encode())
       recv3 = clientSocket.recv(1024).decode()
-    except IOError:
-      connectionSocket.send(badRequestMessage.encode())
     # Fill in end
 
     # Send DATA command and handle server response.
     # Fill in start
-    try:
       dataCommand = 'DATA Bob\r\n'
       clientSocket.send(dataCommand.encode())
       recv4 = clientSocket.recv(1024).decode()
-    except IOError:
-      connectionSocket.send(badRequestMessage.encode())
     # Fill in end
 
     # Send message data.
     # Fill in start
-    message = "Hello World!"
-    clientSocket.send(message.encode())
+      message = "Hello World!"
+      clientSocket.send(message.encode())
     # Fill in end
 
     # Message ends with a single period, send message end and handle server response.
     # Fill in start
-    try:
       clientSocket.send(endmsg.encode())
-    except IOError:
-      connectionSocket.send(badRequestMessage.encode())
     # Fill in end
 
     # Send QUIT command and handle server response.
     # Fill in start
-    try:
       dataCommand = 'QUIT Bob\r\n'
       clientSocket.send(dataCommand.encode())
       recv5 = clientSocket.recv(1024).decode()
