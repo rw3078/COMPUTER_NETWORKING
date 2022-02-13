@@ -33,21 +33,21 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send MAIL FROM command and handle server response.
     # Fill in start
     try:
-      mailFromCommand = 'MAIL FROM Bob\r\n'
+      mailFromCommand = 'MAIL FROM bob@nyu.edu\r\n'
       clientSocket.send(mailCommand.encode())
       recv2 = clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send RCPT TO command and handle server response.
     # Fill in start
-      rcptToCommand = 'RCPT TO Alice\r\n'
+      rcptToCommand = 'RCPT TO alice@nyu.edu\r\n'
       clientSocket.send(mailCommand.encode())
       recv3 = clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send DATA command and handle server response.
     # Fill in start
-      dataCommand = 'DATA Bob\r\n'
+      dataCommand = 'DATA\r\n'
       clientSocket.send(dataCommand.encode())
       recv4 = clientSocket.recv(1024).decode()
     # Fill in end
@@ -65,7 +65,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send QUIT command and handle server response.
     # Fill in start
-      dataCommand = 'QUIT Bob\r\n'
+      dataCommand = 'QUIT\r\n'
       clientSocket.send(dataCommand.encode())
       recv5 = clientSocket.recv(1024).decode()
     except IOError:
