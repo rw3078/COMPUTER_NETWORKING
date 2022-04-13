@@ -132,7 +132,7 @@ def ping(host, timeout=1):
    packet_avg = sum(delayList)/len(delayList)
    standard_deviation = stdev(delayList)
    
-   vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max), 8)), str(round(standard_deviation, 8))]
+   vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)), str(round(standard_deviation, 8))]
 
 
    return vars
