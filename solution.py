@@ -51,13 +51,13 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
        # Fill in start
 
        # Fetch the ICMP header from the IP packet
-       header = recPacket[:8]
-       data = recPacket[8:]
+       header = recPacket[20:28]
+       data = recPacket[28:]
        unpackedHeader = struct.unpack("bbHHh", header)
-       if header[1] == 0 and header[3] == ID:
-           unpackedData = struct.unpack("d", data)
-           delay = timeReceived - unpackedData[0]
-           return delay
+       if unpackedHeader[0] == 0 and unpackedHeader[3] == ID:
+            unpackedData = struct.unpack("d", data)
+            delay = timeReceived - unpackedData[0]
+            return delay
 
        # Fill in end
        timeLeft = timeLeft - howLongInSelect
@@ -133,6 +133,7 @@ def ping(host, timeout=1):
    standard_deviation = stdev(delayList)
    
    vars = [str(round(packet_min, 8)), str(round(packet_avg, 8)), str(round(packet_max, 8)), str(round(standard_deviation, 8))]
+   print(vars)
 
 
    return vars
