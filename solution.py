@@ -54,7 +54,7 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
        header = recPacket[:8]
        data = recPacket[8:]
        unpackedHeader = struct.unpack("bbHHh", header)
-       if header[1] == 0: && header[3] == ID:
+       if header[1] == 0 && header[3] == ID:
            unpackedData = struct.unpack("d", data)
            delay = timeReceived - unpackedData[0]
            return delay
