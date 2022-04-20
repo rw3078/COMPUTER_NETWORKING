@@ -115,7 +115,6 @@ def get_route(hostname):
                     tracelist2.append(tracelist1)
                     #Fill in end
             except timeout:
-                print(str(timeout))
                 continue
             
             else:
@@ -160,7 +159,6 @@ def get_route(hostname):
                     tracelist1.extend((ttl, time.time() - timeSent, addr[0], cur_hostname))
                     tracelist2.append(tracelist1)
                     if addr[0] == destAddr:
-#                         print(tracelist2)
                         return tracelist2
                     #Fill in end
                 else:
@@ -172,7 +170,6 @@ def get_route(hostname):
                 break
             finally:
                 mySocket.close()
-    print(tracelist2)
                 
 if __name__ == '__main__':
     get_route("google.co.il")
